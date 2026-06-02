@@ -1,0 +1,51 @@
+
+1. Maximum Subarray
+      class Solution {
+          public int maxSubArray(int[] nums) {
+              int currSum = 0;
+              int maxSum = Integer.MIN_VALUE;
+      
+              for(int i=0; i<nums.length; i++){
+                  currSum = currSum + nums[i];
+                  maxSum = Math.max(currSum, maxSum);
+                  if(currSum < 0){
+                      currSum = 0;
+                  }
+              }
+              return maxSum;
+          }
+      }
+
+2. Contains Duplicate
+      class Solution {
+          public boolean containsDuplicate(int[] nums) {
+              HashSet<Integer> set = new HashSet<>();
+      
+              for (int num : nums) {
+                  if (set.contains(num)) {
+                      return true;
+                  }
+                  set.add(num);
+              }
+              return false;
+          }
+      }
+
+
+3. Maximum Average Subarray I
+      class Solution {
+          public double findMaxAverage(int[] nums, int k) {
+              double sum = 0;
+      
+              for (int i = 0; i < k; i++) {
+                  sum += nums[i];
+              }
+      
+              double maxSum = sum;
+              for (int i = k; i < nums.length; i++) {
+                  sum = sum - nums[i - k] + nums[i]; 
+                  maxSum = Math.max(maxSum, sum);
+              }
+              return maxSum / k; 
+          }
+      }
