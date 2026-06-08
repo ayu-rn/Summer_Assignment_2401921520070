@@ -1,0 +1,117 @@
+// LibraryUser.java
+
+public interface LibraryUser {
+    void registerAccount();
+    void requestBook();
+}
+
+// KidUser.java
+public class KidUser implements LibraryUser {
+    private int age;
+    private String bookType;
+
+    // Setters to modify variables for the test cases
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBookType(String bookType) {
+        this.bookType = bookType;
+    }
+
+    @Override
+    public void registerAccount() {
+        if (age < 12) {
+            System.out.println("You have successfully registered under a Kids Account");
+        } else {
+            System.out.println("Sorry, Age must be less than 12 to register as a kid");
+        }
+    }
+
+    @Override
+    public void requestBook() {
+        if ("Kids".equals(bookType)) {
+            System.out.println("Book Issued successfully, please return the book within 10 days");
+        } else {
+            System.out.println("Oops, you are allowed to take only kids books");
+        }
+    }
+}
+
+// AdultUser.java
+public class AdultUser implements LibraryUser {
+    private int age;
+    private String bookType;
+
+    // Setters to modify variables for the test cases
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBookType(String bookType) {
+        this.bookType = bookType;
+    }
+
+    @Override
+    public void registerAccount() {
+        if (age > 12) {
+            System.out.println("You have successfully registered under an Adult Account");
+        } else {
+            System.out.println("Sorry, Age must be greater than 12 to register as an adult");
+        }
+    }
+
+    @Override
+    public void requestBook() {
+        if ("Fiction".equals(bookType)) {
+            System.out.println("Book Issued successfully, please return the book within 7 days");
+        } else {
+            System.out.println("Oops, you are allowed to take only adult Fiction books");
+        }
+    }
+}
+
+// LibraryInterfaceDemo.java
+public class LibraryInterfaceDemo {
+    public static void main(String[] args) {
+        
+        System.out.println("========== Test Case #1: KidUser ==========");
+        KidUser kid = new KidUser();
+        
+        // Testing Age registration
+        kid.setAge(10);
+        kid.registerAccount();
+        
+        kid.setAge(18);
+        kid.registerAccount();
+        
+        System.out.println("-------------------------------------------");
+        
+        // Testing Book requests
+        kid.setBookType("Kids");
+        kid.requestBook();
+        
+        kid.setBookType("Fiction");
+        kid.requestBook();
+        
+
+        System.out.println("\n========== Test Case #2: AdultUser ==========");
+        AdultUser adult = new AdultUser();
+        
+        // Testing Age registration
+        adult.setAge(5);
+        adult.registerAccount();
+        
+        adult.setAge(23);
+        adult.registerAccount();
+        
+        System.out.println("-------------------------------------------");
+        
+        // Testing Book requests
+        adult.setBookType("Kids");
+        adult.requestBook();
+        
+        adult.setBookType("Fiction");
+        adult.requestBook();
+    }
+}
