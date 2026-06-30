@@ -1,0 +1,54 @@
+import java.util.Random;
+
+// ==========================================
+// Base Abstract Class
+// ==========================================
+abstract class Compartment {
+    public abstract String notice();
+}
+
+// ==========================================
+// Derived Classes
+// ==========================================
+class FirstClass extends Compartment {
+    @Override
+    public String notice() {
+        return "Notice: This is a First Class compartment. Please keep your ticket handy.";
+    }
+}
+
+class Ladies extends Compartment {
+    @Override
+    public String notice() {
+        return "Notice: This compartment is reserved for Ladies only.";
+    }
+}
+
+class General extends Compartment {
+    @Override
+    public String notice() {
+        return "Notice: This is a General compartment. Unreserved seating.";
+    }
+}
+
+class Luggage extends Compartment {
+    @Override
+    public String notice() {
+        return "Notice: Luggage compartment. No passenger seating allowed.";
+    }
+}
+
+// ==========================================
+// Main Runner Class
+// ==========================================
+public class TestCompartment {
+    public static void main(String[] args) {
+        // Declare an array of Compartment of size 10
+        Compartment[] train = new Compartment[10];
+        
+        // Random number generator
+        Random random = new Random();
+
+        // Populate the array with random compartments
+        for (int i = 0; i < train.length; i++) {
+            // Generate a random integer from
